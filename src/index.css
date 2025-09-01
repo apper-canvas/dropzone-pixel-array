@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Custom toast styling */
+.Toastify__toast {
+  background: #1E293B !important;
+  color: #F1F5F9 !important;
+  border: 1px solid #334155 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.Toastify__toast--success {
+  border-color: #10B981 !important;
+}
+
+.Toastify__toast--error {
+  border-color: #EF4444 !important;
+}
+
+.Toastify__toast--warning {
+  border-color: #F59E0B !important;
+}
+
+.Toastify__close-button {
+  color: #94A3B8 !important;
+}
+
+.Toastify__progress-bar--success {
+  background: linear-gradient(90deg, #10B981, #3B82F6) !important;
+}
+
+.Toastify__progress-bar--error {
+  background: linear-gradient(90deg, #EF4444, #EC4899) !important;
+}
+
+.Toastify__progress-bar--warning {
+  background: linear-gradient(90deg, #F59E0B, #EC4899) !important;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0F172A;
+  color: #F1F5F9;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* Custom utilities */
+.drag-over {
+  border-color: #6366F1 !important;
+  background: rgba(99, 102, 241, 0.05) !important;
+  box-shadow: 0 0 0 1px #6366F1, 0 0 20px rgba(99, 102, 241, 0.3) !important;
+}
+
+.file-input-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #6366F1, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.progress-glow {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+}
+
+/* Animation utilities */
+.animate-bounce-slow {
+  animation: bounce 2s infinite;
+}
+
+@keyframes progress-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.progress-pulse {
+  animation: progress-pulse 1.5s ease-in-out infinite;
+}
