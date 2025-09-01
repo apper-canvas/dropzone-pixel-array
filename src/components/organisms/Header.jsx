@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { useSelector } from 'react-redux';
 import ApperIcon from "@/components/ApperIcon";
-
+import Button from "@/components/atoms/Button";
+import { AuthContext } from "@/App";
 const Header = () => {
+  const { logout } = useContext(AuthContext);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
+  
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -29,7 +34,7 @@ const Header = () => {
             </div>
           </motion.div>
 
-          {/* Navigation */}
+{/* Navigation */}
           <nav className="flex items-center space-x-6">
             <motion.div 
               className="flex items-center space-x-1 text-slate-300"
@@ -54,6 +59,23 @@ const Header = () => {
               <ApperIcon name="Settings" size={16} />
               <span className="text-sm font-medium">Settings</span>
             </motion.div>
+
+            {isAuthenticated && (
+              <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-slate-700">
+                <span className="text-sm text-slate-400">
+                  {user?.firstName || user?.emailAddress || 'User'}
+                </span>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={logout}
+                  className="text-slate-300 hover:text-white"
+                >
+                  <ApperIcon name="LogOut" size={16} className="mr-1" />
+                  Logout
+                </Button>
+              </div>
+            )}
           </nav>
         </div>
       </div>

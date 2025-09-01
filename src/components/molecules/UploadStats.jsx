@@ -14,7 +14,7 @@ const UploadStats = ({ stats }) => {
     },
     {
       icon: "HardDrive",
-      label: "Total Size",
+label: "Total Size",
       value: formatFileSize(stats.totalSize || 0),
       color: "text-secondary"
     },

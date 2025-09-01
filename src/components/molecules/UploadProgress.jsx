@@ -8,7 +8,7 @@ import Card from "@/components/atoms/Card";
 
 const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
   const getStatusIcon = () => {
-    switch (upload.status) {
+switch (upload.status_c || upload.status) {
       case "uploading":
         return "Upload";
       case "completed":
@@ -25,7 +25,7 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
   };
 
   const getStatusColor = () => {
-    switch (upload.status) {
+switch (upload.status_c || upload.status) {
       case "uploading":
         return "text-primary";
       case "completed":
@@ -42,7 +42,7 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
   };
 
   const getProgressVariant = () => {
-    switch (upload.status) {
+switch (upload.status_c || upload.status) {
       case "completed":
         return "success";
       case "error":
@@ -66,7 +66,7 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
           {/* File Icon */}
           <div className="flex-shrink-0">
             <div className="w-12 h-12 bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg flex items-center justify-center">
-              <ApperIcon name={getFileTypeIcon(upload.type)} size={24} className="text-slate-300" />
+<ApperIcon name={getFileTypeIcon(upload.type_c || upload.type)} size={24} className="text-slate-300" />
             </div>
           </div>
 
@@ -74,7 +74,7 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
           <div className="flex-1 min-w-0 space-y-2">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium text-slate-200 truncate">
-                {upload.name}
+{upload.Name || upload.name}
               </h3>
               <div className="flex items-center space-x-2">
                 <ApperIcon 
@@ -82,28 +82,28 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
                   size={16} 
                   className={getStatusColor()} 
                 />
-                <span className="text-xs text-slate-400">
-                  {upload.progress}%
+<span className="text-xs text-slate-400">
+                  {upload.progress_c || upload.progress}%
                 </span>
               </div>
             </div>
 
             <div className="space-y-1">
-              <ProgressBar
-                value={upload.progress}
+<ProgressBar
+                value={upload.progress_c || upload.progress}
                 variant={getProgressVariant()}
                 animated={upload.status === "uploading"}
               />
-              <div className="flex justify-between text-xs text-slate-500">
-                <span>{formatFileSize(upload.size)}</span>
-                <span className="capitalize">{upload.status}</span>
+<div className="flex justify-between text-xs text-slate-500">
+                <span>{formatFileSize(upload.size_c || upload.size)}</span>
+                <span className="capitalize">{upload.status_c || upload.status}</span>
               </div>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="flex-shrink-0 flex items-center space-x-1">
-            {upload.status === "uploading" && (
+{(upload.status_c || upload.status) === "uploading" && (
               <>
                 <Button 
                   variant="ghost" 
@@ -124,7 +124,7 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
               </>
             )}
 
-            {upload.status === "paused" && (
+{(upload.status_c || upload.status) === "paused" && (
               <>
                 <Button 
                   variant="ghost" 
@@ -145,7 +145,7 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
               </>
             )}
 
-            {upload.status === "completed" && onRemove && (
+{(upload.status_c || upload.status) === "completed" && onRemove && (
               <Button 
                 variant="ghost" 
                 size="sm" 
@@ -156,7 +156,7 @@ const UploadProgress = ({ upload, onCancel, onPause, onResume, onRemove }) => {
               </Button>
             )}
 
-            {(upload.status === "error" || upload.status === "cancelled") && (
+{((upload.status_c || upload.status) === "error" || (upload.status_c || upload.status) === "cancelled") && (
               <Button 
                 variant="ghost" 
                 size="sm" 

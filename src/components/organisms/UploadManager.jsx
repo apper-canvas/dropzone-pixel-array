@@ -67,7 +67,7 @@ const UploadManager = () => {
     // Create upload records for each file
     for (const file of queuedFiles) {
       try {
-        const upload = await uploadService.create({
+const upload = await uploadService.create({
           name: file.name,
           size: file.size,
           type: file.type
@@ -272,7 +272,7 @@ const UploadManager = () => {
             <div className="space-y-3">
               <AnimatePresence>
                 {activeUploads.map((upload) => (
-                  <UploadProgress
+<UploadProgress
                     key={upload.Id}
                     upload={upload}
                     onCancel={handleCancelUpload}
@@ -311,7 +311,7 @@ const UploadManager = () => {
             <AnimatePresence>
               {completedUploads.map((upload) => (
                 <motion.div
-                  key={upload.Id}
+key={upload.Id}
                   className="cursor-pointer"
                   onClick={() => handlePreviewFile(upload)}
                 >

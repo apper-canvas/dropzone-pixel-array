@@ -20,11 +20,11 @@ const FilePreview = ({ file, onRemove }) => {
         <div className="flex items-start space-x-3">
           {/* File Icon/Thumbnail */}
           <div className="flex-shrink-0">
-            {isImageFile(file.type) ? (
+{isImageFile(file.type_c || file.type) ? (
               <div className="w-12 h-12 rounded-lg overflow-hidden bg-slate-700">
                 <img
                   src={createPreviewUrl(file)}
-                  alt={file.name}
+alt={file.Name || file.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.style.display = "none";
@@ -32,12 +32,12 @@ const FilePreview = ({ file, onRemove }) => {
                   }}
                 />
                 <div className="w-full h-full bg-slate-700 flex items-center justify-center" style={{ display: "none" }}>
-                  <ApperIcon name={getFileTypeIcon(file.type)} size={24} className="text-slate-400" />
+<ApperIcon name={getFileTypeIcon(file.type_c || file.type)} size={24} className="text-slate-400" />
                 </div>
               </div>
             ) : (
               <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                <ApperIcon name={getFileTypeIcon(file.type)} size={24} className="text-primary" />
+<ApperIcon name={getFileTypeIcon(file.type_c || file.type)} size={24} className="text-primary" />
               </div>
             )}
           </div>
@@ -45,10 +45,10 @@ const FilePreview = ({ file, onRemove }) => {
           {/* File Info */}
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-medium text-slate-200 truncate">
-              {file.name}
+{file.Name || file.name}
             </h3>
             <p className="text-xs text-slate-400 mt-1">
-              {formatFileSize(file.size)} • {file.type}
+{formatFileSize(file.size_c || file.size)} • {file.type_c || file.type}
             </p>
           </div>
 

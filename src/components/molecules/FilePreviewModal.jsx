@@ -37,10 +37,10 @@ const FilePreviewModal = ({ file, isOpen, onClose }) => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-slate-200 truncate max-w-sm">
-                    {file.name}
+{file.Name || file.name}
                   </h3>
                   <p className="text-sm text-slate-400">
-                    {formatFileSize(file.size)} • {file.type}
+{formatFileSize(file.size_c || file.size)} • {file.type_c || file.type}
                   </p>
                 </div>
               </div>
@@ -56,8 +56,8 @@ const FilePreviewModal = ({ file, isOpen, onClose }) => {
                   <motion.img
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    src={createPreviewUrl(file)}
-                    alt={file.name}
+src={createPreviewUrl(file)}
+                    alt={file.Name || file.name}
                     className="max-w-full max-h-[60vh] object-contain rounded-xl"
                   />
                 </div>
@@ -78,9 +78,9 @@ const FilePreviewModal = ({ file, isOpen, onClose }) => {
 
             {/* Footer */}
             <div className="flex items-center justify-end space-x-3 p-6 border-t border-slate-700 bg-slate-800/50">
-              {file.url && (
+{(file.url_c || file.url) && (
                 <Button variant="outline" size="sm" asChild>
-                  <a href={file.url} download={file.name}>
+                  <a href={file.url_c || file.url} download={file.Name || file.name}>
                     <ApperIcon name="Download" size={16} className="mr-2" />
                     Download
                   </a>

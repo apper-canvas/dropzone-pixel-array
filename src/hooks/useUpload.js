@@ -22,7 +22,7 @@ export const useUpload = () => {
   const updateUpload = useCallback(async (id, data) => {
     try {
       const updated = await uploadService.update(id, data);
-      setUploads(prev => prev.map(u => u.Id === id ? updated : u));
+setUploads(prev => prev.map(u => u.Id === id ? updated : u));
       return updated;
     } catch (err) {
       setError("Failed to update upload");
@@ -52,7 +52,7 @@ export const useUpload = () => {
 
   const pauseUpload = useCallback(async (id) => {
     try {
-      const paused = await uploadService.pause(id);
+const paused = await uploadService.pause(id);
       setUploads(prev => prev.map(u => u.Id === id ? paused : u));
       toast.info("Upload paused");
     } catch (err) {
@@ -63,7 +63,7 @@ export const useUpload = () => {
   const resumeUpload = useCallback(async (id) => {
     try {
       const resumed = await uploadService.resume(id);
-      setUploads(prev => prev.map(u => u.Id === id ? resumed : u));
+setUploads(prev => prev.map(u => u.Id === id ? resumed : u));
       toast.info("Upload resumed");
     } catch (err) {
       toast.error("Failed to resume upload");
@@ -73,7 +73,7 @@ export const useUpload = () => {
   const cancelUpload = useCallback(async (id) => {
     try {
       const cancelled = await uploadService.cancel(id);
-      setUploads(prev => prev.map(u => u.Id === id ? cancelled : u));
+setUploads(prev => prev.map(u => u.Id === id ? cancelled : u));
       toast.info("Upload cancelled");
     } catch (err) {
       toast.error("Failed to cancel upload");
